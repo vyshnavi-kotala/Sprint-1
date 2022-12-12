@@ -1,0 +1,149 @@
+SPLINT REPORT
+
+Splint 3.1.2 --- 20 Feb 2018
+
+scheduler.c: (in function readFile)
+
+scheduler.c:53:29: Possibly null storage fp passed as non-null param:
+
+fgets (..., fp)
+
+A possibly null pointer is passed as a parameter corresponding to a formal
+
+parameter with no /*@null@*/ annotation. If NULL may be used for this
+
+parameter, add a /*@null@*/ annotation to the function parameter declaration.
+
+(Use -nullpass to inhibit warning)
+
+scheduler.c:50:10: Storage fp may become null
+
+scheduler.c:58:40: Possibly null storage token passed as non-null param:
+
+strcpy (..., token)
+
+scheduler.c:57:17: Storage token may become null
+
+scheduler.c:60:38: Possibly null storage token passed as non-null param:
+
+strcpy (..., token)
+
+scheduler.c:59:17: Storage token may become null
+
+scheduler.c:62:36: Possibly null storage token passed as non-null param:
+
+atoi (token)
+
+scheduler.c:61:17: Storage token may become null
+
+scheduler.c:64:39: Possibly null storage token passed as non-null param:
+
+strcpy (..., token)
+
+scheduler.c:63:17: Storage token may become null
+
+scheduler.c:68:5: Return value (type int) ignored: fclose(fp)
+
+Result returned by function call is not used. If this is intended, can cast
+
+result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+
+scheduler.c: (in function findDisplayAndRemoveInvalidJobs)
+
+scheduler.c:96:21: Possibly null storage fp passed as non-null param:
+
+fprintf (fp, ...)
+
+scheduler.c:79:10: Storage fp may become null
+
+scheduler.c: (in function writeSchedule)
+
+scheduler.c:172:9: Buffer overflow possible with sprintf. Recommend using
+
+snprintf instead: sprintf
+
+Use of function that may lead to buffer overflow. (Use -bufferoverflowhigh to
+
+inhibit warning)
+
+scheduler.c:174:17: Possibly null storage fp passed as non-null param:
+
+fprintf (fp, ...)
+
+scheduler.c:173:14: Storage fp may become null
+
+scheduler.c:180:9: Return value (type int) ignored: fclose(fp)
+
+scheduler.c: (in function main)
+
+scheduler.c:193:18: Passed storage *jobList contains 5 undefined fields:
+
+jobNo, description, machineNo, duration, clientName
+
+Storage derivable from a parameter, return value or global is not defined.
+
+Use /*@out@*/ to denote passed or returned storage which need not be defined.
+
+(Use -compdef to inhibit warning)
+
+scheduler.c:193:27: Passed storage &jobCount not completely defined:
+
+readFile (..., &jobCount, ...)
+
+scheduler.c:196:37: Passed storage *jobList contains 5 undefined fields:
+
+jobNo, description, machineNo, duration, clientName
+
+scheduler.c:196:46: Passed storage &jobCount not completely defined:
+
+findDisplayAndRemoveInvalidJobs (..., &jobCount, ...)
+
+scheduler.c:202:36: Passed storage *scheduleList contains 4 undefined fields:
+
+jobNo, machineNo, start, end
+
+scheduler.c:202:50: Passed storage &scheduleCount not completely defined:
+
+scheduleJob (..., &scheduleCount)
+
+scheduler.c:207:52: Passed storage *(machineScheduleList->jobScheduleList)
+
+contains 7 undefined fields: jobNo, description, machineNo, duration, ...
+
+scheduler.c:207:52: Passed storage *machineScheduleList contains 2 undefined
+
+fields: machineNo, jobScheduleCount
+
+scheduler.c:47:6: Function exported but not used outside scheduler: readFile
+
+A declaration is exported, but not used outside this module. Declaration can
+
+use static qualifier. (Use -exportlocal to inhibit warning)
+
+scheduler.c:69:1: Definition of readFile
+
+scheduler.c:72:6: Function exported but not used outside scheduler:
+
+findDisplayAndRemoveInvalidJobs
+
+scheduler.c:108:1: Definition of findDisplayAndRemoveInvalidJobs
+
+scheduler.c:113:6: Function exported but not used outside scheduler:
+
+scheduleJob
+
+scheduler.c:128:1: Definition of scheduleJob
+
+scheduler.c:131:6: Function exported but not used outside scheduler:
+
+groupScheduleList
+
+scheduler.c:160:1: Definition of groupScheduleList
+
+scheduler.c:163:6: Function exported but not used outside scheduler:
+
+writeSchedule
+
+scheduler.c:182:1: Definition of writeSchedule
+
+Finished checking --- 23 code warnings
