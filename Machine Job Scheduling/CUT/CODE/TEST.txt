@@ -1,0 +1,5 @@
+J001:pipe bending:m1:45:expert accessories
+J002:surface cleaning:m2:30:nice part makers
+J001:pipe bending:m2:60:expert accessories
+J002:surface cleaning:m3:30:nice part makers
+J00:pipe bending:m1:45:expert accessories
