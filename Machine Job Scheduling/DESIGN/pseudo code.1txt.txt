@@ -50,9 +50,3 @@ schedule updates.
 #6 void writeSchedule (machineSchedule *machineScheduleList,
     int machineScheduleCount)
 write schedule from groupScheduleList by using machineScheduleList, machineScheduleCount
-
-#7 invalidFile(char *)
-
-1. Open invalidRecord.txt in “a+” mode, add incoming invalid inputs.
-2. Put a lock because multiple lists may use it to access invalidRecord file and each
-invalid record should be preserved.
