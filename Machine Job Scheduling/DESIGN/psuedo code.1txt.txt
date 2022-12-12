@@ -1,0 +1,58 @@
+Input file type: .txt
+
+Structure for input files:
+
+typedef is used for structures
+ 
+define the structure for job 
+5 character using typedef/variables
+Job No : Description : MachineNo : Duration : ClientName
+
+define the structure for schedule
+Job No : MachineNo : Start : End
+
+define the structure for jobSchedule
+Job No : Description : MachineNo : Duration : ClientName : Start : End
+
+
+#1 main() takes files as CML argument
+
+1. Take multiple files as a input from user : in main()
+2. Send one file at a time in Joblist() function.
+3. Create joblists for each file, calling joblist().
+4. Repeat steps 2 and 3 until all files are read.
+
+
+#2 Function readFile
+
+readFile: Reads file and add to joblist 
+Open a file using function fopen() and store the file File pointer.
+ Read content of file using functions fgets()
+ Ex: J001:pipe bending:m1:45:expert accessories 
+J002:surface cleaning:m2:30:nice part maker
+
+
+#3 findDisplayAndRemoveInvalidJobs
+ when description is empty,
+ when machine no is less than 2,
+ when duration is less than 1,
+ when client name is empty the job is invalid
+
+#4 Function schedule Jobs (void scheduleJob(job *jobList,int jobCount,
+    schedule *scheduleList,int *scheduleCount))
+This function scheduleJobs based on jobList, jobCount, scheduleList, scheduleCount;
+
+#5 void groupScheduleList(schedule *scheduleList,int scheduleCount,
+    machineSchedule *machineScheduleList,int *machineScheduleCount)
+1. Open Schedule files for each machine in read and write mode to make entry of incoming
+schedule updates.
+
+#6 void writeSchedule (machineSchedule *machineScheduleList,
+    int machineScheduleCount)
+write schedule from groupScheduleList by using machineScheduleList, machineScheduleCount
+
+#7 invalidFile(char *)
+
+1. Open invalidRecord.txt in “a+” mode, add incoming invalid inputs.
+2. Put a lock because multiple lists may use it to access invalidRecord file and each
+invalid record should be preserved.
